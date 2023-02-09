@@ -9,21 +9,10 @@
 void UAnimInstancePureCpp::NativeInitializeAnimation()
 {
 	Super::NativeInitializeAnimation();
-
-	USkeletalMeshComponentPureCpp* Mesh = Cast<USkeletalMeshComponentPureCpp>(GetSkelMeshComponent());
-	if (!Mesh)
-	{
-		return;
-	}
-
-	FAnimInstanceProxyPureCpp& Proxy = GetProxyOnGameThread<FAnimInstanceProxyPureCpp>();
-	Proxy.Sequence = Mesh->Temp;
 }
 
 void UAnimInstancePureCpp::NativeUpdateAnimation(float DeltaSeconds)
 {
-
-	
 	Super::NativeUpdateAnimation(DeltaSeconds);
 }
 

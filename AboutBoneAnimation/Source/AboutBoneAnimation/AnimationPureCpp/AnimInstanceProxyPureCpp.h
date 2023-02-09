@@ -15,6 +15,8 @@ public:
 	UAnimSequenceBase* Sequence = nullptr;
 
 protected:
+	virtual void Initialize(UAnimInstance* InAnimInstance) override;
+	
 	virtual FAnimNode_Base* GetCustomRootNode() override;
 
 	virtual void GetCustomNodes(TArray<FAnimNode_Base*>& OutNodes) override;
