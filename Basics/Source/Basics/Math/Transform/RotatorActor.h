@@ -4,19 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "VectorActor.generated.h"
+#include "RotatorActor.generated.h"
 
-class UStaticMeshComponent;
-
-// Learn About Vector Demo as Actor
 UCLASS()
-class BASICS_API AVectorActor : public AActor
+class BASICS_API ARotatorActor : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AVectorActor();
+	ARotatorActor();
 
 protected:
 	// Called when the game starts or when spawned
@@ -27,18 +24,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(CallInEditor)
-	void ExplainVector() const;
-
+	void ExplainRotator();
+	
 protected:
 	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* StaticMesh;
-	
-	UPROPERTY(EditAnywhere)
-	bool bShouldMove;
-	
-	UPROPERTY(EditAnywhere)
-	FVector Vector1;
-
-	UPROPERTY(EditAnywhere)
-	FVector Vector2;
+	FRotator Rotator1;
 };
