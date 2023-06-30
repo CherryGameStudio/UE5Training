@@ -24,6 +24,11 @@ void AVectorActor::BeginPlay()
 void AVectorActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (bShouldMove)
+	{
+		StaticMesh->AddRelativeLocation(Vector1 * DeltaTime);
+	}
 }
 
 void AVectorActor::ExplainVector() const
@@ -45,7 +50,6 @@ void AVectorActor::ExplainVector() const
 	UE_LOG(LogTemp, Log, TEXT("SquaredLength()：%f。"),	LocalVector1.SquaredLength());
 	UE_LOG(LogTemp, Log, TEXT("Size2D()：%f。"),		LocalVector1.Size2D());					// 获得2维向量长度
 	UE_LOG(LogTemp, Log, TEXT("SizeSquared2D()：%f。"),	LocalVector1.SizeSquared2D());
-
 	UE_LOG(LogTemp, Log, TEXT("IsNearlyZero()：%s。"),	LocalVector1.IsNearlyZero() ? TEXT("true") : TEXT("false"));
 	UE_LOG(LogTemp, Log, TEXT("IsZero()：%s。"),		LocalVector1.IsZero() ? TEXT("true") : TEXT("false"));
 	UE_LOG(LogTemp, Log, TEXT("IsUnit()：%s。"),		LocalVector1.IsUnit() ? TEXT("true") : TEXT("false"));
@@ -75,8 +79,16 @@ void AVectorActor::ExplainVector() const
 	{
 		// TODO Clamp   BoundToCube
 	}
+	
+	// 两个Vector之间的操作
+	FVector LocalVector2 = Vector2;
+	// 点乘
+	UE_LOG(LogTemp, Log, TEXT("operator * ：%f。"),	LocalVector1 | LocalVector2);
+	UE_LOG(LogTemp, Log, TEXT("FVector::DotProduct ：%f。"),	FVector::DotProduct(LocalVector1, LocalVector2));
 
-	// 作为坐标
+	// 叉乘
+	UE_LOG(LogTemp, Log, TEXT("operator ^ ：%s。"),	*(LocalVector1 ^ LocalVector2).ToString());
+	UE_LOG(LogTemp, Log, TEXT("FVector::CrossProduct ：%s。"),	*FVector::CrossProduct(LocalVector1, LocalVector2).ToString());
   
 	UE_LOG(LogTemp, Log, TEXT("--------ExplainVector End--------"));
 }
