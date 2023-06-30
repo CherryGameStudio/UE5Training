@@ -1,8 +1,9 @@
 ﻿#pragma once
 #include "Animation/AnimInstanceProxy.h"
+#include "Animation/AnimNode_Root.h"
+#include "Animation/AnimNode_SequencePlayer.h"
+#include "AnimNodes/AnimNode_TwoWayBlend.h"
 
-//struct FAnimNode_Base;
-struct FAnimNode_SequencePlayer;
 
 class FAnimInstanceProxyPureCpp : public FAnimInstanceProxy
 {
@@ -11,8 +12,6 @@ public:
 		: FAnimInstanceProxy(Instance)
 	{
 	}
-	
-	UAnimSequenceBase* Sequence = nullptr;
 
 protected:
 	virtual void Initialize(UAnimInstance* InAnimInstance) override;
@@ -21,6 +20,13 @@ protected:
 
 	virtual void GetCustomNodes(TArray<FAnimNode_Base*>& OutNodes) override;
 
+	virtual void Update(float DeltaSeconds) override;
+
 private:
-	FAnimNode_Base* RootNode = nullptr;
+	UAnimSequenceBase* SequenceA = nullptr;
+	UAnimSequenceBase* SequenceB = nullptr;
+	FAnimNode_SequencePlayer A;
+	FAnimNode_SequencePlayer B;
+	FAnimNode_TwoWayBlend BlendSample;
+	FAnimNode_Root InternalRootNode;
 };

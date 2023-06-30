@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "CherryMath",
+	"Description": "Math In Cherry",
+	"Category": "Other",
+	"CreatedBy": "Cherry",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CherryMath",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
